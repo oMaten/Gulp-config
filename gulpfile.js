@@ -35,7 +35,7 @@ gulp.task('jade', function(){
 	return gulp.src('src/jade/*.jade')
 		.pipe(plumber())
 		.pipe(data(function(file) {
-		  return JSON.parse(fs.readFileSync('data/data.json'));
+			return JSON.parse(fs.readFileSync('data/data.json'));
 		}))
 		.pipe(gulpJade({
 			jade: jade,
@@ -57,6 +57,6 @@ gulp.task('watch', function(){
 	gulp.watch('src/jade/**.jade', ['jade','sass']);
 	gulp.watch('src/scss/**.scss', ['sass']);
 	gulp.watch('src/js/**.js', ['compress']);
-})
+});
 
 gulp.task('default', ['sass', 'jade', 'compress', 'connect', 'watch']);
